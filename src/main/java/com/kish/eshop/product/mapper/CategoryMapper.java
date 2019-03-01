@@ -3,6 +3,7 @@ package com.kish.eshop.product.mapper;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -12,6 +13,7 @@ import com.kish.eshop.product.model.Category;
 public interface CategoryMapper {
 
 	@Insert("INSERT INTO category(name,description) VALUES(#{name},#{description})")  
+	@Options(useGeneratedKeys=true, keyProperty="id", keyColumn="id")
 	public void add(Category category);
 	
 	@Update("UPDATE category SET name=#{name},description=#{description} WHERE id=#{id}")  
